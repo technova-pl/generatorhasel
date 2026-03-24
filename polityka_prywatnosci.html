@@ -4,59 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polityka Prywatności | Generator Haseł</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0f172a; --glass: rgba(255, 255, 255, 0.05); --accent: #818cf8; --text-muted: #94a3b8; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #f8fafc; line-height: 1.8; padding: 60px 20px; margin: 0; }
-        .container { max-width: 900px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(15px); padding: 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-        h1 { color: var(--accent); font-size: 2.5rem; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
-        h2 { color: #fff; font-size: 1.5rem; margin-top: 40px; }
-        p, li { color: #cbd5e1; font-size: 1rem; }
-        ul { padding-left: 20px; }
-        .highlight { color: #22d3ee; font-weight: 600; }
-        .section { margin-bottom: 30px; }
-        .back-btn { display: inline-flex; align-items: center; margin-bottom: 20px; color: var(--accent); text-decoration: none; font-weight: 600; transition: 0.3s; }
-        .back-btn:hover { color: #fff; transform: translateX(-5px); }
+        :root { --bg: #020617; --glass: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.1); --accent: #818cf8; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: #f8fafc; line-height: 1.8; padding: 40px 20px; margin: 0; background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #020617 100%); }
+        .container { max-width: 900px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 60px; border-radius: 32px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px -20px rgba(0,0,0,0.7); animation: fadeIn 0.8s ease-out; }
+        h1 { font-size: 3rem; font-weight: 800; background: linear-gradient(to right, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 40px; }
+        h2 { font-size: 1.6rem; color: #fff; margin-top: 50px; border-left: 4px solid var(--accent); padding-left: 15px; }
+        p { color: #94a3b8; font-size: 1.05rem; }
+        .card { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 25px; border-radius: 16px; margin: 20px 0; }
+        .back-link { color: var(--accent); text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-block; margin-bottom: 40px; }
+        .back-link:hover { color: #fff; transform: translateX(-5px); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-btn">← Powrót do aplikacji</a>
+        <a href="index.html" class="back-link">← Wróć do generatora</a>
         <h1>Polityka Prywatności</h1>
         
-        <div class="section">
-            <p>Ostatnia aktualizacja: <strong>24 marca 2026 r.</strong></p>
-            <p>Niniejszy dokument opisuje zasady gromadzenia i wykorzystywania danych podczas korzystania z serwisu hostowanego na platformie <span class="highlight">GitHub Pages</span>, zintegrowanego z usługami analitycznymi firmy <span class="highlight">Google LLC</span>.</p>
+        <p>Niniejsza Polityka Prywatności określa zasady przetwarzania informacji w serwisie hostowanym na <strong>GitHub Pages</strong>, wykorzystującym zaawansowane narzędzia analityczne <strong>Google Analytics 4</strong> oraz <strong>Google Tag Manager</strong>.</p>
+
+        <div class="card">
+            <h2>1. Przetwarzanie Lokalne (Privacy by Design)</h2>
+            <p>Nasz generator haseł został zaprojektowany w myśl zasady <em>Privacy by Design</em>. Algorytm generowania haseł wykorzystuje <code>Web Crypto API</code> i działa wyłącznie w piaskownicy Twojej przeglądarki. <strong>Żadne wygenerowane hasło nie jest przesyłane do usług Google Analytics ani na serwery GitHub.</strong> Twoje bezpieczeństwo jest oddzielone od analityki technicznej.</p>
         </div>
 
-        <div class="section">
-            <h2>1. Bezpieczeństwo Danych i Generowanie Haseł</h2>
-            <p>Podstawową funkcją serwisu jest generowanie haseł. Proces ten odbywa się w całości po stronie klienta (Client-Side) przy użyciu bezpiecznego mechanizmu <code>window.crypto.getRandomValues()</code>. Oznacza to, że:</p>
-            <ul>
-                <li>Wygenerowane hasła <strong>nigdy nie opuszczają Twojej przeglądarki</strong>.</li>
-                <li>Treść haseł nie jest rejestrowana przez narzędzia analityczne (Google Analytics).</li>
-                <li>Historia haseł zapisywana jest lokalnie w pamięci <code>localStorage</code> Twojego urządzenia.</li>
-            </ul>
-        </div>
+        <h2>2. Google Analytics 4 (GA4) i GTM</h2>
+        <p>W celu optymalizacji wydajności serwisu, zbieramy anonimowe dane o zdarzeniach:</p>
+        <ul>
+            <li>Interakcje z interfejsem (kliknięcia w przyciski generowania, kopiowania).</li>
+            <li>Dane techniczne (rodzaj przeglądarki, rozdzielczość ekranu, przybliżona geolokalizacja).</li>
+            <li>Źródła ruchu (skąd trafiłeś na naszą stronę).</li>
+        </ul>
+        <p>Google Tag Manager (GTM) służy nam do bezpiecznego zarządzania tymi skryptami, zapewniając ich szybkie ładowanie bez wpływu na stabilność generatora.</p>
 
-        <div class="section">
-            <h2>2. Narzędzia Analityczne i Marketingowe</h2>
-            <p>W celu optymalizacji i zrozumienia ruchu na stronie, korzystamy z ekosystemu Google:</p>
-            <ul>
-                <li><strong>Google Tag Manager (GTM):</strong> System zarządzania tagami, który pozwala na sprawne wdrażanie skryptów analitycznych bez modyfikacji kodu strony.</li>
-                <li><strong>Google Analytics 4 (GA4):</strong> Narzędzie zbierające dane o zachowaniu użytkowników (np. odwiedzone podstrony, czas sesji, przybliżona lokalizacja, rozdzielczość ekranu). Dane te są poddawane anonimizacji.</li>
-                <li><strong>Google Search Console:</strong> Usługa służąca do monitorowania indeksowania strony oraz błędów technicznych w wyszukiwarce.</li>
-            </ul>
-        </div>
+        <h2>3. Google Search Console</h2>
+        <p>Wykorzystujemy Search Console do monitorowania stanu indeksowania witryny oraz optymalizacji pod kątem wyszukiwarek. Usługa ta zbiera dane o zapytaniach, które doprowadziły Cię do naszego serwisu, co pozwala nam lepiej dopasować narzędzie do potrzeb użytkowników.</p>
 
-        <div class="section">
-            <h2>3. Pliki Cookies (Ciasteczka)</h2>
-            <p>Serwis wykorzystuje pliki cookies do poprawnego działania usług Google. Ciasteczka analityczne pozwalają odróżnić użytkowników powracających od nowych. Możesz zarządzać ciasteczkami w ustawieniach swojej przeglądarki lub użyć trybu Incognito.</p>
-        </div>
-
-        <div class="section">
-            <h2>4. Hosting i Logi Serwera</h2>
-            <p>Ponieważ strona jest hostowana na GitHub Pages, GitHub Inc. może automatycznie zbierać logi systemowe (np. adres IP użytkownika, datę i godzinę zapytania) w celach zapewnienia bezpieczeństwa i stabilności infrastruktury.</p>
-        </div>
+        <h2>4. Okres przechowywania danych</h2>
+        <p>Dane zbierane przez Google Analytics są przechowywane przez okres 14 miesięcy, po czym są automatycznie usuwane. Historia haseł w Twojej przeglądarce (localStorage) przechowywana jest do momentu ręcznego wyczyszczenia danych przeglądania przez użytkownika.</p>
     </div>
 </body>
 </html>
