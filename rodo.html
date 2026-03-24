@@ -2,25 +2,30 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>RODO | Generator Haseł</title>
+    <title>RODO | Obowiązek Informacyjny</title>
     <style>
         :root { --bg: #0f172a; --glass: rgba(255, 255, 255, 0.05); --accent: #10b981; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f8fafc; padding: 40px 20px; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-        h1 { color: var(--accent); }
-        strong { color: #fff; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #cbd5e1; padding: 60px 20px; line-height: 1.8; }
+        .container { max-width: 900px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(15px); padding: 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
+        h1 { color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+        .legal-box { background: rgba(0,0,0,0.2); padding: 25px; border-radius: 12px; margin-top: 20px; border-left: 4px solid var(--accent); }
     </style>
 </head>
 <body>
     <div class="container">
+        <a href="index.html" style="color:var(--accent); text-decoration:none; font-weight:bold;">← Powrót</a>
         <h1>Informacja RODO</h1>
-        <p>W związku z korzystaniem z narzędzi <strong>Google Analytics</strong> oraz <strong>GTM</strong>, informujemy o przetwarzaniu danych:</p>
-        <p>1. <strong>Administrator:</strong> Administratorem danych technicznych zbieranych przez stronę jest właściciel serwisu.</p>
-        <p>2. <strong>Przetwarzane dane:</strong> Adres IP (pseudonimizowany), lokalizacja przybliżona, dane o urządzeniu i aktywności w serwisie.</p>
-        <p>3. <strong>Odbiorcy danych:</strong> Google LLC (USA - na podstawie standardowych klauzul umownych) oraz GitHub Inc. (hosting).</p>
-        <p>4. <strong>Twoje prawa:</strong> Masz prawo do żądania dostępu do swoich danych, ich usunięcia (poprzez wyczyszczenie cookies) oraz wniesienia skargi do Prezesa UODO.</p>
-        <br>
-        <a href="index.html" style="color:var(--accent); text-decoration:none;">← Powrót</a>
+        
+        <p>Zgodnie z art. 13 ogólnego rozporządzenia o ochronie danych osobowych z dnia 27 kwietnia 2016 r. (RODO), informujemy o zasadach przetwarzania danych:</p>
+
+        <div class="legal-box">
+            <p><strong>1. Administrator Danych:</strong> Administratorem danych technicznych zbieranych w celach statystycznych jest właściciel niniejszego serwisu.</p>
+            <p><strong>2. Cele i Podstawa Przetwarzania:</strong> Przetwarzanie odbywa się na podstawie art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes), polegający na prowadzeniu analityki ruchu przy użyciu <strong>Google Analytics 4</strong> oraz <strong>Google Tag Manager</strong> w celu optymalizacji witryny.</p>
+            <p><strong>3. Odbiorcy Danych:</strong> Dane mogą być przekazywane podmiotom przetwarzającym: Google LLC (statystyki), GitHub Inc. (hosting strony).</p>
+            <p><strong>4. Transfer Danych do Państw Trzecich:</strong> W związku z korzystaniem z usług Google, dane mogą być przekazywane do USA na podstawie standardowych klauzul umownych oraz ram ochrony danych (Data Privacy Framework).</p>
+            <p><strong>5. Prawa Użytkownika:</strong> Przysługuje Ci prawo do dostępu do danych, ich sprostowania, usunięcia oraz ograniczenia przetwarzania. Możesz również złożyć sprzeciw wobec śledzenia analitycznego poprzez instalację dodatku do przeglądarki blokującego Google Analytics.</p>
+            <p><strong>6. Okres Przechowywania:</strong> Dane analityczne w usłudze Google Analytics są przechowywane przez standardowy okres retencji ustawiony w panelu GA4 (zazwyczaj 14 miesięcy).</p>
+        </div>
     </div>
 </body>
 </html>
