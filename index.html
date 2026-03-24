@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator haseł - TechNova GitHub.io</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary: #818cf8;
+            --accent: #22d3ee;
+            --text: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            background-attachment: fixed;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        /* Szklany Kontener */
+        .container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 { text-align: center; margin: 0 0 1.5rem 0; font-weight: 800; letter-spacing: -1px; }
+
+        .result-container {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .password-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
+
+        #password-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            word-break: break-all;
+            color: var(--accent);
+            flex-grow: 1;
+        }
+
+        #password-display.hidden { -webkit-text-security: disc; }
+
+        .action-btns { display: flex; gap: 8px; }
+
+        .btn-icon {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-icon:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+
+        /* Ulepszony pasek siły */
+        .strength-meter {
+            height: 4px;
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #strength-bar { height: 100%; width: 0%; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        .settings { display: flex; flex-direction: column; gap: 1.2rem; }
+        .setting { display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; }
+
+        input[type="range"] { 
+            width: 100%; 
+            accent-color: var(--accent); 
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            height: 6px;
+            appearance: none;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 1.2rem;
+            margin-top: 2rem;
+            border: none;
+            border-radius: 1rem;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(129, 140, 248, 0.3);
+        }
+
+        .generate-btn:hover { background: #6366f1; transform: scale(1.02); }
+
+        /* Historia - Styl Glass */
+        .history-container {
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .history-list {
+            list-style: none;
+            padding: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .history-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: monospace;
+            transition: 0.2s;
+        }
+
+        .history-item:hover { background: rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Generator haseł</h2>
+    
+    <div class="result-container">
+        <div class="password-row">
+            <span id="password-display">Ładowanie...</span>
+            <div class="action-btns">
+                <button class="btn-icon" id="toggle-view" title="Ukryj">👁️</button>
+                <button class="btn-icon" id="qr-btn">QR</button>
+                <button class="btn-icon" id="copy-btn">📋</button>
+            </div>
+        </div>
+        <div class="strength-meter">
+            <div id="strength-bar"></div>
+        </div>
+    </div>
+
+    <div class="settings">
+        <div>
+            <label>Długość: <span id="length-val" style="color:var(--accent)">18</span></label>
+            <input type="range" id="length" min="8" max="50" value="18">
+        </div>
+        <div class="setting"><label>Wielkie litery</label><input type="checkbox" id="uppercase" checked></div>
+        <div class="setting"><label>Małe litery</label><input type="checkbox" id="lowercase" checked></div>
+        <div class="setting"><label>Cyfry</label><input type="checkbox" id="numbers" checked></div>
+        <div class="setting"><label>Znaki specjalne</label><input type="checkbox" id="symbols" checked></div>
+    </div>
+
+    <button class="generate-btn" id="generate-btn">Generuj Bezpieczne Hasło</button>
+</div>
+
+<div class="history-container">
+    <p style="margin-left: 10px; font-weight: 600; color: rgba(255,255,255,0.6);">Ostatnie hasła</p>
+    <ul class="history-list" id="history-list"></ul>
+</div>
+
+<div id="modal-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:1000; backdrop-filter: blur(5px);">
+    <div style="background:var(--card); padding:2rem; border-radius:1.5rem; text-align:center;">
+        <div id="qrcode" style="background:white; padding:15px; border-radius:10px;"></div>
+        <button class="generate-btn" onclick="document.getElementById('modal-overlay').style.display='none'">Zamknij</button>
+    </div>
+</div>
+
+<script>
+    const display = document.getElementById('password-display');
+    const lengthEl = document.getElementById('length');
+    const lengthVal = document.getElementById('length-val');
+    const historyList = document.getElementById('history-list');
+
+    const sets = {
+        upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        lower: 'abcdefghijklmnopqrstuvwxyz',
+        numbers: '0123456789',
+        symbols: '!@#$%^&*()_+~`|}{[]:;?><,./-='
+    };
+
+    function updateStrength(pw) {
+        let score = 0;
+        if (pw.length > 12) score += 30;
+        if (/[A-Z]/.test(pw)) score += 20;
+        if (/[0-9]/.test(pw)) score += 20;
+        if (/[^A-Za-z0-9]/.test(pw)) score += 30;
+        
+        const bar = document.getElementById('strength-bar');
+        bar.style.width = score + '%';
+        bar.style.backgroundColor = score < 50 ? '#ef4444' : score < 80 ? '#f59e0b' : '#10b981';
+    }
+
+    // ULEPSZONE GENEROWANIE
+    function generate() {
+        const config = [
+            { id: 'uppercase', chars: sets.upper },
+            { id: 'lowercase', chars: sets.lower },
+            { id: 'numbers', chars: sets.numbers },
+            { id: 'symbols', chars: sets.symbols }
+        ];
+
+        let activeSets = config.filter(c => document.getElementById(c.id).checked);
+        if (activeSets.length === 0) return "Wybierz opcje!";
+
+        let result = [];
+        const len = parseInt(lengthEl.value);
+
+        // 1. Gwarancja: po jednym znaku z każdego wybranego typu
+        activeSets.forEach(s => {
+            const randomByte = window.crypto.getRandomValues(new Uint8Array(1))[0];
+            result.push(s.chars[randomByte % s.chars.length]);
+        });
+
+        // 2. Reszta znaków całkowicie losowa
+        const allChars = activeSets.map(s => s.chars).join('');
+        const extraLen = len - result.length;
+        const randomValues = window.crypto.getRandomValues(new Uint32Array(extraLen));
+
+        for (let i = 0; i < extraLen; i++) {
+            result.push(allChars[randomValues[i] % allChars.length]);
+        }
+
+        // 3. Tasowanie Fisher-Yates (żeby znaki gwarantowane nie były zawsze na początku)
+        for (let i = result.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [result[i], result[j]] = [result[j], result[i]];
+        }
+
+        const finalPw = result.join('');
+        display.innerText = finalPw;
+        updateStrength(finalPw);
+        saveToHistory(finalPw);
+    }
+
+    function saveToHistory(pw) {
+        let history = JSON.parse(localStorage.getItem('pw_glass_history')) || [];
+        history.unshift(pw);
+        history = history.slice(0, 5);
+        localStorage.setItem('pw_glass_history', JSON.stringify(history));
+        renderHistory();
+    }
+
+    function renderHistory() {
+        const history = JSON.parse(localStorage.getItem('pw_glass_history')) || [];
+        historyList.innerHTML = history.map(pw => `
+            <li class="history-item">
+                <span>${pw.substring(0, 15)}...</span>
+                <button onclick="navigator.clipboard.writeText('${pw}'); alert('Skopiowano!')" style="background:none; border:none; cursor:pointer; font-size:1.1rem;">📋</button>
+            </li>
+        `).join('');
+    }
+
+    // Eventy
+    document.getElementById('generate-btn').addEventListener('click', generate);
+    document.getElementById('toggle-view').addEventListener('click', () => display.classList.toggle('hidden'));
+    lengthEl.addEventListener('input', (e) => lengthVal.innerText = e.target.value);
+    
+    document.getElementById('copy-btn').addEventListener('click', () => {
+        navigator.clipboard.writeText(display.innerText);
+        const btn = document.getElementById('copy-btn');
+        btn.innerText = "✅";
+        setTimeout(() => btn.innerText = "📋", 1000);
+    });
+
+    document.getElementById('qr-btn').addEventListener('click', () => {
+        document.getElementById('qrcode').innerHTML = "";
+        new QRCode(document.getElementById('qrcode'), { text: display.innerText, width: 160, height: 160 });
+        document.getElementById('modal-overlay').style.display = 'flex';
+    });
+
+    // Start
+    renderHistory();
+    generate();
+</script>
+</body>
+</html>
