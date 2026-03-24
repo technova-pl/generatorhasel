@@ -3,29 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>RODO | Obowiązek Informacyjny</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0f172a; --glass: rgba(255, 255, 255, 0.05); --accent: #10b981; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #cbd5e1; padding: 60px 20px; line-height: 1.8; }
-        .container { max-width: 900px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(15px); padding: 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
-        h1 { color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
-        .legal-box { background: rgba(0,0,0,0.2); padding: 25px; border-radius: 12px; margin-top: 20px; border-left: 4px solid var(--accent); }
+        :root { --bg: #020617; --glass: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.1); --accent: #10b981; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: #cbd5e1; padding: 40px 20px; line-height: 1.8; margin: 0; background-image: radial-gradient(circle at 100% 100%, #064e3b 0%, #020617 100%); }
+        .container { max-width: 950px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(25px); padding: 60px; border-radius: 32px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8); }
+        h1 { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 30px; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .info-card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 20px; border-top: 3px solid var(--accent); }
+        .info-card h4 { color: var(--accent); margin-top: 0; text-transform: uppercase; font-size: 0.85rem; }
+        .back-btn { display: inline-block; background: var(--accent); color: #000; padding: 12px 25px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; margin-bottom: 30px; }
+        .back-btn:hover { transform: scale(1.05); filter: brightness(1.2); }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" style="color:var(--accent); text-decoration:none; font-weight:bold;">← Powrót</a>
-        <h1>Informacja RODO</h1>
-        
-        <p>Zgodnie z art. 13 ogólnego rozporządzenia o ochronie danych osobowych z dnia 27 kwietnia 2016 r. (RODO), informujemy o zasadach przetwarzania danych:</p>
+        <h1>Obowiązek Informacyjny (RODO)</h1>
+        <p>Zgodnie z art. 13 ust. 1 i 2 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. (RODO), informujemy o zasadach przetwarzania Twoich danych technicznych w związku z użyciem usług Google i GitHub:</p>
 
-        <div class="legal-box">
-            <p><strong>1. Administrator Danych:</strong> Administratorem danych technicznych zbieranych w celach statystycznych jest właściciel niniejszego serwisu.</p>
-            <p><strong>2. Cele i Podstawa Przetwarzania:</strong> Przetwarzanie odbywa się na podstawie art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes), polegający na prowadzeniu analityki ruchu przy użyciu <strong>Google Analytics 4</strong> oraz <strong>Google Tag Manager</strong> w celu optymalizacji witryny.</p>
-            <p><strong>3. Odbiorcy Danych:</strong> Dane mogą być przekazywane podmiotom przetwarzającym: Google LLC (statystyki), GitHub Inc. (hosting strony).</p>
-            <p><strong>4. Transfer Danych do Państw Trzecich:</strong> W związku z korzystaniem z usług Google, dane mogą być przekazywane do USA na podstawie standardowych klauzul umownych oraz ram ochrony danych (Data Privacy Framework).</p>
-            <p><strong>5. Prawa Użytkownika:</strong> Przysługuje Ci prawo do dostępu do danych, ich sprostowania, usunięcia oraz ograniczenia przetwarzania. Możesz również złożyć sprzeciw wobec śledzenia analitycznego poprzez instalację dodatku do przeglądarki blokującego Google Analytics.</p>
-            <p><strong>6. Okres Przechowywania:</strong> Dane analityczne w usłudze Google Analytics są przechowywane przez standardowy okres retencji ustawiony w panelu GA4 (zazwyczaj 14 miesięcy).</p>
+        <div class="info-grid">
+            <div class="info-card">
+                <h4>Administrator</h4>
+                <p>Administratorem danych jest właściciel serwisu. W sprawach związanych z prywatnością prosimy o kontakt poprzez platformę GitHub.</p>
+            </div>
+            <div class="info-card">
+                <h4>Cele Przetwarzania</h4>
+                <p>Pomiar ruchu (Google Analytics 4), zarządzanie skryptami (GTM) oraz utrzymanie infrastruktury technicznej (GitHub Pages).</p>
+            </div>
+            <div class="info-card">
+                <h4>Prawa Użytkownika</h4>
+                <p>Prawo do żądania dostępu do danych, sprostowania, usunięcia ("prawo do bycia zapomnianym") oraz prawo do wniesienia skargi do PUODO (ul. Stawki 2, Warszawa).</p>
+            </div>
+            <div class="info-card">
+                <h4>Transfer do USA</h4>
+                <p>Twoje dane (np. IP) mogą być przekazywane do Google LLC w USA na podstawie standardowych klauzul umownych chroniących Twoją prywatność.</p>
+            </div>
         </div>
+
+        <p style="margin-top: 40px; text-align: center;">
+            <a href="index.html" class="back-btn">AKCEPTUJĘ I WRACAM</a>
+        </p>
     </div>
 </body>
 </html>
