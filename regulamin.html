@@ -5,21 +5,31 @@
     <title>Regulamin | Generator Haseł</title>
     <style>
         :root { --bg: #0f172a; --glass: rgba(255, 255, 255, 0.05); --accent: #22d3ee; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f8fafc; padding: 40px 20px; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-        h1 { color: var(--accent); }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #cbd5e1; padding: 60px 20px; line-height: 1.8; }
+        .container { max-width: 900px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(15px); padding: 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
+        h1 { color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+        h3 { color: #fff; margin-top: 30px; }
+        .back-btn { color: var(--accent); text-decoration: none; font-weight: 600; display: block; margin-bottom: 20px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Regulamin Serwisu</h1>
-        <p>1. Serwis udostępnia bezpłatne narzędzie do generowania losowych haseł bezpieczeństwa.</p>
-        <p>2. Usługa jest hostowana na platformie GitHub Pages i podlega również ich warunkom świadczenia usług.</p>
-        <p>3. Użytkownik jest wyłącznym właścicielem wygenerowanych haseł. Serwis nie przechowuje ich kopii.</p>
-        <p>4. Właściciel serwisu nie ponosi odpowiedzialności za szkody powstałe w wyniku użycia haseł o niskiej sile lub utraty haseł z historii lokalnej przeglądarki.</p>
-        <p>5. Korzystanie z serwisu oznacza akceptację monitorowania ruchu przez narzędzia Google Analytics.</p>
-        <br>
-        <a href="index.html" style="color:var(--accent); text-decoration:none;">← Powrót</a>
+        <a href="index.html" class="back-btn">← Powrót do generatora</a>
+        <h1>Regulamin Użytkowania</h1>
+        
+        <h3>§1. Postanowienia Ogólne</h3>
+        <p>Niniejszy regulamin określa zasady bezpłatnego korzystania z aplikacji internetowej "Generator Haseł", dostępnej w domenie hostowanej przez GitHub Pages.</p>
+
+        <h3>§2. Charakter Usługi</h3>
+        <p>Usługa polega na dostarczeniu interfejsu umożliwiającego generowanie ciągów znaków o charakterze haseł bezpieczeństwa. Całość obliczeń odbywa się w przeglądarce użytkownika bez udziału serwerów zewnętrznych w procesie losowania.</p>
+
+        <h3>§3. Odpowiedzialność</h3>
+        <p>1. Twórca narzędzia dokłada wszelkich starań, aby algorytmy generowania haseł były zgodne z najnowszymi standardami bezpieczeństwa (Web Crypto API).</p>
+        <p>2. Twórca nie ponosi odpowiedzialności za siłę haseł wygenerowanych przy użyciu niskich parametrów długości wybranych przez użytkownika.</p>
+        <p>3. Serwis nie gwarantuje wieczystego przechowywania historii haseł – dane te są przechowywane lokalnie i mogą zostać usunięte przez użytkownika lub system przy czyszczeniu pamięci przeglądarki.</p>
+
+        <h3>§4. Warunki Techniczne</h3>
+        <p>Do poprawnego działania wymagana jest przeglądarka z obsługą standardu HTML5, CSS3 oraz włączoną obsługą JavaScript. Użytkownik wyraża zgodę na działanie skryptów analitycznych Google Analytics w celu poprawy jakości serwisu.</p>
     </div>
 </body>
 </html>
