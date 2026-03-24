@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Regulamin | Generator Haseł</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0f172a; --glass: rgba(255, 255, 255, 0.05); --accent: #22d3ee; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #cbd5e1; padding: 60px 20px; line-height: 1.8; }
-        .container { max-width: 900px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(15px); padding: 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
-        h1 { color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
-        h3 { color: #fff; margin-top: 30px; }
-        .back-btn { color: var(--accent); text-decoration: none; font-weight: 600; display: block; margin-bottom: 20px; }
+        :root { --bg: #020617; --glass: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.1); --accent: #22d3ee; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: #94a3b8; line-height: 1.8; padding: 40px 20px; margin: 0; background-image: radial-gradient(circle at 0% 100%, #164e63 0%, #020617 100%); }
+        .container { max-width: 900px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(20px); padding: 60px; border-radius: 32px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px -20px rgba(0,0,0,0.7); animation: fadeIn 1s ease-in-out; }
+        h1 { font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 40px; letter-spacing: -2px; }
+        h3 { color: var(--accent); font-size: 1.3rem; margin-top: 40px; text-transform: uppercase; letter-spacing: 1px; }
+        p { margin-bottom: 20px; }
+        .back-link { color: #fff; text-decoration: none; opacity: 0.6; transition: 0.3s; }
+        .back-link:hover { opacity: 1; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-btn">← Powrót do generatora</a>
+        <a href="index.html" class="back-link">← Powrót</a>
         <h1>Regulamin Użytkowania</h1>
         
-        <h3>§1. Postanowienia Ogólne</h3>
-        <p>Niniejszy regulamin określa zasady bezpłatnego korzystania z aplikacji internetowej "Generator Haseł", dostępnej w domenie hostowanej przez GitHub Pages.</p>
+        <h3>§1. Warunki korzystania</h3>
+        <p>Aplikacja "Pro Generator Haseł" jest narzędziem open-source udostępnianym bezpłatnie. Korzystając z serwisu, użytkownik akceptuje fakt, że strona jest hostowana przez GitHub Pages, co może wiązać się z automatycznym zbieraniem logów serwerowych przez dostawcę hostingu.</p>
 
-        <h3>§2. Charakter Usługi</h3>
-        <p>Usługa polega na dostarczeniu interfejsu umożliwiającego generowanie ciągów znaków o charakterze haseł bezpieczeństwa. Całość obliczeń odbywa się w przeglądarce użytkownika bez udziału serwerów zewnętrznych w procesie losowania.</p>
+        <h3>§2. Gwarancje i Odpowiedzialność</h3>
+        <p>1. Użytkownik przyjmuje do wiadomości, że żadne hasło nie jest w 100% niemożliwe do złamania. Siła hasła zależy od wybranych parametrów.</p>
+        <p>2. Administrator nie ponosi odpowiedzialności za utratę danych wynikającą z zapomnienia haseł wyświetlonych w historii sesji.</p>
+        <p>3. Serwis nie służy do przechowywania haseł (nie jest menedżerem haseł), a jedynie do ich generowania.</p>
 
-        <h3>§3. Odpowiedzialność</h3>
-        <p>1. Twórca narzędzia dokłada wszelkich starań, aby algorytmy generowania haseł były zgodne z najnowszymi standardami bezpieczeństwa (Web Crypto API).</p>
-        <p>2. Twórca nie ponosi odpowiedzialności za siłę haseł wygenerowanych przy użyciu niskich parametrów długości wybranych przez użytkownika.</p>
-        <p>3. Serwis nie gwarantuje wieczystego przechowywania historii haseł – dane te są przechowywane lokalnie i mogą zostać usunięte przez użytkownika lub system przy czyszczeniu pamięci przeglądarki.</p>
+        <h3>§3. Własność Intelektualna</h3>
+        <p>Kod źródłowy interfejsu oraz algorytmy są własnością twórcy. Użytkownik ma prawo do swobodnego wykorzystywania wygenerowanych haseł w dowolnych celach komercyjnych i prywatnych bez opłat licencyjnych.</p>
 
-        <h3>§4. Warunki Techniczne</h3>
-        <p>Do poprawnego działania wymagana jest przeglądarka z obsługą standardu HTML5, CSS3 oraz włączoną obsługą JavaScript. Użytkownik wyraża zgodę na działanie skryptów analitycznych Google Analytics w celu poprawy jakości serwisu.</p>
+        <h3>§4. Zmiany w usłudze</h3>
+        <p>Zastrzegamy sobie prawo do modyfikacji funkcjonalności generatora (np. dodawania nowych algorytmów losowania) bez wcześniejszego powiadomienia użytkowników.</p>
     </div>
 </body>
 </html>
