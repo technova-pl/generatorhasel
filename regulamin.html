@@ -2,38 +2,168 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Regulamin | Generator Haseł</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulamin | Pro Generator Haseł</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #020617; --glass: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.1); --accent: #22d3ee; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: #94a3b8; line-height: 1.8; padding: 40px 20px; margin: 0; background-image: radial-gradient(circle at 0% 100%, #164e63 0%, #020617 100%); }
-        .container { max-width: 900px; margin: 0 auto; background: var(--glass); backdrop-filter: blur(20px); padding: 60px; border-radius: 32px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px -20px rgba(0,0,0,0.7); animation: fadeIn 1s ease-in-out; }
-        h1 { font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 40px; letter-spacing: -2px; }
-        h3 { color: var(--accent); font-size: 1.3rem; margin-top: 40px; text-transform: uppercase; letter-spacing: 1px; }
-        p { margin-bottom: 20px; }
-        .back-link { color: #fff; text-decoration: none; opacity: 0.6; transition: 0.3s; }
-        .back-link:hover { opacity: 1; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        :root { 
+            --bg: #020617; 
+            --glass: rgba(255, 255, 255, 0.03); 
+            --glass-border: rgba(255, 255, 255, 0.1); 
+            --accent: #22d3ee; 
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg); 
+            color: #cbd5e1; 
+            padding: 40px 20px; 
+            margin: 0; 
+            background-image: radial-gradient(circle at 0% 100%, #164e63 0%, #020617 100%); 
+            min-height: 100vh;
+        }
+
+        .container { 
+            max-width: 950px; 
+            margin: 0 auto; 
+            background: var(--glass); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px);
+            padding: 60px; 
+            border-radius: 32px; 
+            border: 1px solid var(--glass-border); 
+            box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8); 
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h1 { 
+            font-size: 3rem; 
+            font-weight: 800; 
+            color: #fff; 
+            margin-bottom: 20px; 
+            letter-spacing: -2px; 
+        }
+
+        .subtitle {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .info-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            margin-top: 40px; 
+        }
+
+        .info-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            padding: 30px; 
+            border-radius: 24px; 
+            border: 1px solid var(--glass-border);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .info-card h4 { 
+            color: var(--accent); 
+            margin-top: 0; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .back-btn { 
+            display: inline-block; 
+            background: transparent; 
+            color: #fff; 
+            padding: 10px 20px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: 0.3s; 
+            margin-bottom: 30px; 
+            border: 1px solid var(--glass-border);
+        }
+
+        .back-btn:hover { 
+            background: var(--glass-border);
+            transform: translateX(-5px);
+        }
+
+        .footer-note {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.2);
+        }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 30px; }
+            h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-link">← Powrót</a>
-        <h1>Regulamin Użytkowania</h1>
-        
-        <h3>§1. Warunki korzystania</h3>
-        <p>Aplikacja "Pro Generator Haseł" jest narzędziem open-source udostępnianym bezpłatnie. Korzystając z serwisu, użytkownik akceptuje fakt, że strona jest hostowana przez GitHub Pages, co może wiązać się z automatycznym zbieraniem logów serwerowych przez dostawcę hostingu.</p>
+        <a href="index.html" class="back-btn">← Wróć do generatora</a>
+        <h1>Regulamin</h1>
+        <p class="subtitle">Zasady korzystania z profesjonalnego generatora haseł.</p>
 
-        <h3>§2. Gwarancje i Odpowiedzialność</h3>
-        <p>1. Użytkownik przyjmuje do wiadomości, że żadne hasło nie jest w 100% niemożliwe do złamania. Siła hasła zależy od wybranych parametrów.</p>
-        <p>2. Administrator nie ponosi odpowiedzialności za utratę danych wynikającą z zapomnienia haseł wyświetlonych w historii sesji.</p>
-        <p>3. Serwis nie służy do przechowywania haseł (nie jest menedżerem haseł), a jedynie do ich generowania.</p>
+        <div class="info-grid">
+            <div class="info-card">
+                <h4>§1 Usługa</h4>
+                <p>Narzędzie służy do bezpłatnego generowania losowych ciągów znaków. Usługa jest hostowana na GitHub Pages i działa w oparciu o technologie przeglądarkowe użytkownika.</p>
+            </div>
 
-        <h3>§3. Własność Intelektualna</h3>
-        <p>Kod źródłowy interfejsu oraz algorytmy są własnością twórcy. Użytkownik ma prawo do swobodnego wykorzystywania wygenerowanych haseł w dowolnych celach komercyjnych i prywatnych bez opłat licencyjnych.</p>
+            <div class="info-card">
+                <h4>§2 Odpowiedzialność</h4>
+                <p>Twórca nie ponosi odpowiedzialności za skutki użycia wygenerowanych haseł, ich siłę wobec ataków oraz bezpieczeństwo kont, na których zostaną użyte.</p>
+            </div>
 
-        <h3>§4. Zmiany w usłudze</h3>
-        <p>Zastrzegamy sobie prawo do modyfikacji funkcjonalności generatora (np. dodawania nowych algorytmów losowania) bez wcześniejszego powiadomienia użytkowników.</p>
+            <div class="info-card">
+                <h4>§3 Prywatność</h4>
+                <p>Proces generowania jest monitorowany przez Google Analytics 4 (GTM). Same hasła są jednak generowane lokalnie i nie są widoczne dla systemów śledzących.</p>
+            </div>
+
+            <div class="info-card">
+                <h4>§4 Dane Lokalne</h4>
+                <p>Historia haseł jest przechowywana w <code>localStorage</code> urządzenia użytkownika. Administrator nie posiada kopii zapasowych tych danych.</p>
+            </div>
+
+            <div class="info-card">
+                <h4>§5 Prawa Autorskie</h4>
+                <p>Kod źródłowy interfejsu chroniony jest prawem autorskim. Użytkownik ma pełne prawo do komercyjnego wykorzystania wszystkich wygenerowanych haseł.</p>
+            </div>
+
+            <div class="info-card">
+                <h4>§6 Akceptacja</h4>
+                <p>Korzystanie z serwisu oznacza pełną akceptację niniejszego regulaminu oraz polityki prywatności z uwzględnieniem hostingu GitHub.</p>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            © 2026 Generator Haseł. Wszystkie prawa zastrzeżone.
+        </div>
     </div>
 </body>
 </html>
