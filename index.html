@@ -320,7 +320,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         new QRCode(document.getElementById('qrcode'), { text: display.innerText, width: 160, height: 160 });
         document.getElementById('modal-overlay').style.display = 'flex';
     });
-<footer>
+    // Start
+    renderHistory();
+    generate();
+</script>
+    <footer>
     <div class="footer-links">
         <a href="polityka_prywatnosci.html">Polityka Prywatności</a>
         <a href="regulamin.html">Regulamin</a>
@@ -330,9 +334,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         © 2026 Generator Haseł. Wszelkie prawa zastrzeżone.
     </div>
 </footer>
-    // Start
-    renderHistory();
-    generate();
-</script>
 </body>
 </html>
