@@ -388,11 +388,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         setTimeout(() => btn.innerText = "📋", 1000);
     });
 
-    document.getElementById('qr-btn').addEventListener('click', () => {
-        document.getElementById('qrcode').innerHTML = "";
-        new QRCode(document.getElementById('qrcode'), { text: display.innerText, width: 160, height: 160 });
-        document.getElementById('modal-overlay').style.display = 'flex';
+document.getElementById('qr-btn').addEventListener('click', () => {
+    const qrContainer = document.getElementById('qrcode');
+    qrContainer.innerHTML = ""; // Czyścimy poprzedni kod
+    
+    const password = display.innerText;
+
+    // Tworzymy nowy kod QR z jawnym określeniem parametrów
+    new QRCode(qrContainer, {
+        text: password, // Surowe hasło
+        width: 200,
+        height: 200,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H // Wysoki poziom korekcji błędów
     });
+
+    // Wymuszamy odświeżenie kontenera i pokazujemy modal
+    document.getElementById('modal-overlay').style.display = 'flex';
+});
     // Start
     renderHistory();
     generate();
