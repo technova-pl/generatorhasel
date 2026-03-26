@@ -241,9 +241,93 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             .container { padding: 2rem; }
             h2 { font-size: 1.6rem; }
         }
+    /* Styl Banera Cookies */
+.cookie-banner {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 700px;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 25px;
+    z-index: 10000;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: none; /* Ukryty domyślnie, JS go pokaże */
+    animation: slideUp 0.5s ease-out;
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.cookie-text strong {
+    display: block;
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.cookie-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+.cookie-text a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cookie-btn.accept {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.cookie-btn.accept:hover {
+    background: #6366f1;
+    transform: scale(1.05);
+}
+
+@keyframes slideUp {
+    from { transform: translate(-50%, 100%); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+    .cookie-content { flex-direction: column; text-align: center; gap: 20px; }
+}
     </style>
 </head>
 <body>
+<div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-content">
+        <div class="cookie-text">
+            <strong>Prywatność i Cookies 🍪</strong>
+            <p>Używamy Google Analytics, aby zrozumieć, jak korzystasz z generatora. Dane są anonimowe. 
+               Szczegóły w <a href="polityka_prywatnosci.html">Polityce Prywatności</a>.</p>
+        </div>
+        <div class="cookie-actions">
+            <button id="accept-cookies" class="cookie-btn accept">Akceptuję</button>
+        </div>
+    </div>
+</div>
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQ7JZSX3"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -292,6 +376,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+
+    // Funkcja ładująca Google Tag Manager
+    function activateGTM() {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PQ7JZSX3');
+        
+        console.log("GTM został aktywowany.");
+    }
+
+    // Sprawdzanie zgody w localStorage
+    if (localStorage.getItem('cookies_accepted') === 'true') {
+        activateGTM(); // Już zaakceptowano wcześniej
+    } else {
+        banner.style.display = 'block'; // Pokaż baner, jeśli brak zgody
+    }
+
+    // Obsługa kliknięcia "Akceptuję"
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookies_accepted', 'true');
+        banner.style.display = 'none';
+        activateGTM(); // Aktywuj GTM natychmiast po kliknięciu
+    });
+});
     const display = document.getElementById('password-display');
     const lengthEl = document.getElementById('length');
     const lengthVal = document.getElementById('length-val');
